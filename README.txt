@@ -10,6 +10,15 @@ For substantially more details on the API please see http://cocodataset.org/#dow
 After downloading the images and annotations, run the Matlab, Python, or Lua demos for example usage.
 
 To install:
--For Matlab, add coco/MatlabApi to the Matlab path (OSX/Linux binaries provided)
+-For Matlab, add coco/MatlabApi to the Matlab path (OSX/Linux binaries provided);
+
+copy all files from common to coco/MatlabApi;mex maskApiMex.c maskApi.c(but do not compile gason);
+
 -For Python, run "make" under coco/PythonAPI
 -For Lua, run “luarocks make LuaAPI/rocks/coco-scm-1.rockspec” under coco/
+
+
+Note:
+
+In val2014, only 100 random images are evaluated in the scripts.
+
