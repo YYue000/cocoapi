@@ -12,7 +12,20 @@ After downloading the images and annotations, run the Matlab, Python, or Lua dem
 To install:
 -For Matlab, add coco/MatlabApi to the Matlab path (OSX/Linux binaries provided);
 
-copy all files from common to coco/MatlabApi;mex maskApiMex.c maskApi.c(but do not compile gason);
+---
+(setup mex)
+!which gcc
+
+mex -setup C GCC='/usr/bin/gcc'
+
+mex -setup C GCC='/usr/bin/g++'
+
+---
+(compile)
+cd MatlabApI && cp ../common/* . && cp private/maskApiMex.c .
+
+mex maskApiMex.c maskApi.c(but do not compile gason);
+
 
 -For Python, run "make" under coco/PythonAPI
 -For Lua, run “luarocks make LuaAPI/rocks/coco-scm-1.rockspec” under coco/
