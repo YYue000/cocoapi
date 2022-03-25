@@ -2,7 +2,8 @@ type = 'bbox'
 
 resFileRoot = '/repair_workspace/mmdetection/corruption_benchmarks/retinanet'
 
-Models = {'retinanet_r50_fpn_1x_coco'};
+Models = {'retinanet_r101_fpn_1x_coco'};
+%Models = {'retinanet_r50_fpn_1x_coco'};
 
 Corruption={'gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur','glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression'};
 
@@ -18,8 +19,11 @@ cnt=2;
 for j=1:length(Corruption)
     for s=1:5
         allDirName{cnt} = sprintf("%s-%d",Corruption{j},s);
+        cnt = cnt+1;
     end
 end
+
+allDirName
 
 for i=1:length(Models)
     model=Models{i}
@@ -31,9 +35,9 @@ for i=1:length(Models)
         cocoDt=cocoGt.loadRes(resFile);
         cocoEval=CocoEval(cocoGt,cocoDt,type);
         cocoEval.params.imgIds=imgIds;
-        cocoEval.evaluate();
-        cocoEval.accumulate();
-        cocoEval.summarize();
+        %cocoEval.evaluate();
+        %cocoEval.accumulate();
+        %cocoEval.summarize();
         cocoEval.analyze(outDir);
     end
 
